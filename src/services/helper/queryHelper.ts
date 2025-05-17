@@ -30,15 +30,16 @@ export const queryInsert = async (sql: string, params: any[]): Promise<number> =
   }
 };
 
-export const queryUpdate = async (sql: string, params: any[]): Promise<boolean> => {
+export const queryUpdateOne = async <T = any>(sql: string, params: any[]): Promise<T | null> => {
   try {
     const result = await dbPool.query(sql, params);
-    return result.rowCount! > 0;
+    return result.rows[0] || null;
   } catch (error) {
     console.error("❌ Query Update Error:", error);
     throw error;
   }
 };
+
 
 export const queryDelete = async (sql: string, params: any[]): Promise<boolean> => {
   try {
