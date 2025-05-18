@@ -4,7 +4,7 @@ import { Request, Response, NextFunction } from "express";
 import { logMiddlewareRequest } from "./middleware/logs";
 import dotenv from "dotenv";
 import routes from "./routes";
-import { response_internal_server_error, response_not_found } from "./utils/response.utils";
+import { response_internal_server_error, response_not_found, response_success } from "./utils/response.utils";
 import path from "path";
 dotenv.config();
 
@@ -23,6 +23,10 @@ app.use(cors({
 
 app.use(logMiddlewareRequest);
 app.use("/assets", express.static("public/images"));
+
+app.get("/", (req: Request, res: Response) => {
+  return response_success(res, null, "Welcome to the API 🚀. This API is created for job test purposes for the Backend Engineer (Node.js) position at Nutech.");
+});
 
 app.use("/", routes);
 
