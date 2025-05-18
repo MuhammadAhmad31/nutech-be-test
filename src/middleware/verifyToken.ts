@@ -9,7 +9,7 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction) => 
   const { authorization } = req.headers;
 
   if (!authorization) {
-    return response_unauthorized(res, "Token tidak valid atau kadaluarsa");
+    return response_unauthorized(res, "Token tidak tidak valid atau kadaluwarsa");
   }
 
   const token = authorization.split(" ")[1];
@@ -24,6 +24,6 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction) => 
 
     next();
   } catch (error) {
-    return response_unauthorized(res, "Token tidak valid atau kadaluarsa");
+    return response_unauthorized(res, "Token tidak tidak valid atau kadaluwarsa");
   }
 };

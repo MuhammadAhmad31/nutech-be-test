@@ -75,7 +75,7 @@ export const updateImage = async (
       return response_not_found(res, "User tidak ditemukan");
     }
 
-    return response_success<Profile>(res, updated, "Gambar profil berhasil diperbarui");
+    return response_success<Profile>(res, updated, "Update Profile Image berhasil");
   } catch (error: any) {
     return response_internal_server_error(res, "Terjadi kesalahan saat memperbarui gambar");
   }
